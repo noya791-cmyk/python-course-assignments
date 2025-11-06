@@ -33,9 +33,15 @@ Write code that uses the GUI to calculate volumes for a standard PCR reaction -
 the function will calculate how much of each reagent should be added according to the following ratios:
 
 Component | Volume (µL) | Notes
-2× Green Master Mix | 7.5 µL | Always half the final volume because this is a 2× concentration solution
-Primer Forward (10 µM) | 0.5 µL | Final concentration 0.33 µM
-Primer Reverse (10 µM) | 0.5 µL | Final concentration 0.33 µM
-Template DNA | 1 µL | Depending on the concentration of your DNA (usually 10–100 ng)
-Water (ddH₂O / nuclease-free) | 5.5 µL | To make up the volume to 15 µL
 
+2× Green Master Mix - 7.5 µL . Always half the final volume because this is a 2× concentration solution
+
+Primer Forward (10 µM) - 0.5 µL . Final concentration 0.33 µM
+
+Primer Reverse (10 µM) - 0.5 µL . Final concentration 0.33 µM
+
+Template DNA - 1 µL . Depending on the concentration of your DNA (usually 10–100 ng)
+
+Water (ddH₂O / nuclease-free)- 5.5 µL . To make up the volume to 15 µL
+
+https://www.thermofisher.com/order/catalog/product/K1081
