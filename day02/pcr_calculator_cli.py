@@ -1,24 +1,15 @@
 import argparse
+from pcr_calculator import PCRCalculator
 
-def calculate_pcr_volumes(num_reactions):
-    # Add 10% extra volume for pipetting errors
-    safety_factor = 1.1
+def display_results(num_reactions):
+    # Get volumes from calculator
+    volumes = PCRCalculator.calculate_volumes(num_reactions)
     
-    # Base volumes per reaction
-    volumes = {
-        "2× Green Master Mix": 7.5,
-        "Primer Forward (10 µM)": 0.5,
-        "Primer Reverse (10 µM)": 0.5,
-        "Template DNA": 1.0,
-        "Water (ddH₂O)": 5.5
-    }
-    
-    # Calculate and print results
+    # Display results
     print("\nResults (safety factor of 10% included):")
     print("-" * 40)
-    for component, base_volume in volumes.items():
-        total_volume = base_volume * float(num_reactions) * safety_factor
-        print(f"{component}:\t{total_volume:.2f} µL")
+    for component in PCRCalculator.COMPONENTS:
+        print(f"{component}:\t{volumes[component]:.2f} µL")
 
 def main():
     # Set up argument parser
@@ -40,7 +31,7 @@ def main():
     else:
         num_reactions = args.value
     
-    calculate_pcr_volumes(num_reactions)
+    display_results(num_reactions)
 
 if __name__ == "__main__":
     main()

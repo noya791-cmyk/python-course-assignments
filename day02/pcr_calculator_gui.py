@@ -1,7 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+from pcr_calculator import PCRCalculator
 
-class PCRCalculator:
+class PCRCalculatorGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("PCR Reaction Calculator")
@@ -19,18 +20,12 @@ class PCRCalculator:
         ttk.Button(self.main_frame, text="Calculate", command=self.calculate).grid(row=1, column=0, columnspan=2, pady=10)
         
         # Create results display area
-        res_text = "Results (safty factor of 10% included):"
+        res_text = "Results (safety factor of 10% included):"
         self.results_frame = ttk.LabelFrame(self.main_frame, text=res_text, padding="10")
         self.results_frame.grid(row=2, column=0, columnspan=2, sticky=(tk.W, tk.E))
         
         # Labels for results
-        self.components = [
-            "2× Green Master Mix",
-            "Primer Forward (10 µM)",
-            "Primer Reverse (10 µM)",
-            "Template DNA",
-            "Water (ddH₂O)"
-        ]
+        self.components = PCRCalculator.COMPONENTS
         
         self.result_labels = {}
         for i, component in enumerate(self.components):
@@ -41,28 +36,18 @@ class PCRCalculator:
     def calculate(self):
         try:
             num_reactions = float(self.num_reactions.get())
-            # Add 10% extra volume for pipetting errors
-            safety_factor = 1.1
+            # Get volumes from calculator
+            volumes = PCRCalculator.calculate_volumes(num_reactions)
             
-            # Base volumes per reaction
-            volumes = {
-                "2× Green Master Mix": 7.5,
-                "Primer Forward (10 µM)": 0.5,
-                "Primer Reverse (10 µM)": 0.5,
-                "Template DNA": 1.0,
-                "Water (ddH₂O)": 5.5
-            }
-            
-            # Calculate and update display
+            # Update display
             for component in self.components:
-                total_volume = volumes[component] * num_reactions * safety_factor
-                self.result_labels[component].config(text=f"{total_volume:.2f} µL")
+                self.result_labels[component].config(text=f"{volumes[component]:.2f} µL")
         except:
             pass
 
 def main():
     root = tk.Tk()
-    app = PCRCalculator(root)
+    app = PCRCalculatorGUI(root)
     root.mainloop()
 
 if __name__ == "__main__":
