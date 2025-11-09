@@ -19,7 +19,8 @@ class PCRCalculator:
         ttk.Button(self.main_frame, text="Calculate", command=self.calculate).grid(row=1, column=0, columnspan=2, pady=10)
         
         # Create results display area
-        self.results_frame = ttk.LabelFrame(self.main_frame, text="Results", padding="10")
+        res_text = "Results (safty factor of 10% included):"
+        self.results_frame = ttk.LabelFrame(self.main_frame, text=res_text, padding="10")
         self.results_frame.grid(row=2, column=0, columnspan=2, sticky=(tk.W, tk.E))
         
         # Labels for results
@@ -49,3 +50,20 @@ class PCRCalculator:
                 "Primer Forward (10 µM)": 0.5,
                 "Primer Reverse (10 µM)": 0.5,
                 "Template DNA": 1.0,
+                "Water (ddH₂O)": 5.5
+            }
+            
+            # Calculate and update display
+            for component in self.components:
+                total_volume = volumes[component] * num_reactions * safety_factor
+                self.result_labels[component].config(text=f"{total_volume:.2f} µL")
+        except:
+            pass
+
+def main():
+    root = tk.Tk()
+    app = PCRCalculator(root)
+    root.mainloop()
+
+if __name__ == "__main__":
+    main()
