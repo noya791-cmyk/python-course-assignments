@@ -1,6 +1,39 @@
 # PCR Reaction Calculator
 
-This program creates a simple GUI (Graphical User Interface) for calculating the volumes of reagents required for a standard PCR reaction.
+This repository contains two versions of the PCR Reaction Calculator:
+1. A GUI version (`pcr_calculator_gui.py`) with a graphical interface
+2. A CLI version (`pcr_calculator_cli.py`) for command-line usage, and user interactive.
+
+## 🧬 Description
+
+### GUI Version
+The GUI version provides a graphical interface built using **Tkinter** for calculating PCR reaction volumes. Simply input the number of reactions and click calculate.
+
+### CLI Version
+The command-line version can be used in two ways:
+1. With command-line argument: `python pcr_calculator_cli.py --value <number_of_reactions>`
+2. Interactive mode: Run without arguments and enter the number when prompted
+
+Both versions include a 10% safety factor for pipetting errors.
+
+## 🧬 Usage Examples
+
+### GUI Version
+```bash
+python pcr_calculator_gui.py
+```
+
+### CLI Version
+With argument:
+```bash
+python pcr_calculator_cli.py --value 3
+```
+
+Interactive mode:
+```bash
+python pcr_calculator_cli.py
+Enter number of reactions: 3
+```
 
 ## 🧬 Description
 
