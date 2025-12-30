@@ -1,0 +1,11 @@
+gene,avg_log2FC,p_val_adj,cluster
+GeneA,2.50,0.001,1
+GeneB,1.80,0.020,1
+GeneC,-0.50,0.100,2
+GeneD,3.00,0.0001,2
+GeneE,0.90,0.030,3
+GeneF,1.20,0.200,3
+GeneG,2.10,0.049,1
+GeneH,-1.00,0.0005,2
+GeneI,0.50,0.800,4
+GeneJ,1.60,0.010,4
